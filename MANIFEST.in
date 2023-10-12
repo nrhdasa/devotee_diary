@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include devotee_diary *.css
+recursive-include devotee_diary *.csv
+recursive-include devotee_diary *.html
+recursive-include devotee_diary *.ico
+recursive-include devotee_diary *.js
+recursive-include devotee_diary *.json
+recursive-include devotee_diary *.md
+recursive-include devotee_diary *.png
+recursive-include devotee_diary *.py
+recursive-include devotee_diary *.svg
+recursive-include devotee_diary *.txt
+recursive-exclude devotee_diary *.pyc
