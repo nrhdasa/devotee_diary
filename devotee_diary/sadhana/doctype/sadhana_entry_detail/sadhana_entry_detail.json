@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-13 10:42:00.294072",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "parameter",
+  "grade",
+  "points",
+  "authorised_service",
+  "sick"
+ ],
+ "fields": [
+  {
+   "fieldname": "parameter",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Parameter",
+   "options": "Sadhana Parameter",
+   "reqd": 1
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Grade",
+   "options": "\nA+\nA\nB\nC",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "authorised_service",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Authorised Service"
+  },
+  {
+   "fieldname": "points",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Points",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sick",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Sick"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-13 17:11:38.237985",
+ "modified_by": "Administrator",
+ "module": "Sadhana",
+ "name": "Sadhana Entry Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
