@@ -12,7 +12,8 @@
   "name1",
   "grades",
   "sick_allowed",
-  "authorised_service_allowed"
+  "authorised_service_allowed",
+  "priority"
  ],
  "fields": [
   {
@@ -44,11 +45,17 @@
    "fieldname": "authorised_service_allowed",
    "fieldtype": "Check",
    "label": "Authorised Service Allowed"
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Priority"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-20 10:28:03.219982",
+ "modified": "2023-10-24 14:46:58.447788",
  "modified_by": "Administrator",
  "module": "Sadhana",
  "name": "Sadhana Parameter",

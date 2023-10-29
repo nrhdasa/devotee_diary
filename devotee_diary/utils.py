@@ -29,24 +29,3 @@ def get_devotees(detailed=0):
         )
     else:
         return final_list
-
-
-# ## This returns the Users, the preacher is assigned to.
-# @frappe.whitelist()
-# def get_preacher_users(preacher):
-#     ## PRCH_REMAP
-#     users = []
-
-#     for i in frappe.db.sql(
-#         f"""
-#                     select pu.user
-#                     from `tabLLP Preacher` p
-#                     join `tabLLP Preacher User` pu
-#                     on p.name = pu.parent
-#                     where p.name = '{preacher}'
-#                     group by pu.user
-#                     """,
-#         as_dict=1,
-#     ):
-#         users.append(i["user"])
-#     return users
