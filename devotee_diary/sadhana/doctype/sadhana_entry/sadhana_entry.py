@@ -8,6 +8,7 @@ from frappe.utils.data import cint, getdate
 
 class SadhanaEntry(Document):
     def autoname(self):
+        
         dateF = getdate(self.date)
         dateStr = dateF.strftime("%y-%m-%d")
         self.name = f"{self.devotee}-{dateStr}"
@@ -18,22 +19,17 @@ class SadhanaEntry(Document):
 
     def validate_grades(self):
         for p in self.parameters:
-            frappe.errprint(p.grade)
             if p.grade:
                 points = frappe.get_value(
                 "Sadhana Parameter Detail",
                 filters=[["parent", "=", p.parameter], ["grade", "=", p.grade]],
                 fieldname="points",
                 )
-                frappe.errprint("Points")
-                frappe.errprint(points)
-                frappe.errprint(p.parameter)
-                frappe.errprint(p.grade)
                 if points is None:
                     frappe.throw(f"Points for Grade <b>{p.grade}</b> is not SET in Sadhana Parameter <b>{p.parameter}</b>.")
                 p.points = points
             elif not(p.authorised_service or p.sick):
-                    frappe.throw(f"Grade is mandatory in case of no <b>AS or SICK</b>")
+                    frappe.throw(f"{p.parameter}: Grade is mandatory in case of no <b>AS or SICK</b>")
         return
 
     def validate_duplicates(self):

@@ -9,7 +9,8 @@
  "field_order": [
   "date",
   "devotee",
-  "parameters"
+  "parameters",
+  "amended_from"
  ],
  "fields": [
   {
@@ -26,18 +27,28 @@
    "in_list_view": 1,
    "label": "Devotee",
    "options": "DED Devotee",
-   "reqd": 1
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "fieldname": "parameters",
    "fieldtype": "Table",
    "label": "Parameters",
    "options": "Sadhana Entry Detail"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Sadhana Entry",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-13 18:56:35.852180",
+ "modified": "2023-12-01 17:03:06.343719",
  "modified_by": "Administrator",
  "module": "Sadhana",
  "name": "Sadhana Entry",

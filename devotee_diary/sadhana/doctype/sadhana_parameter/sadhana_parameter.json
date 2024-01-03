@@ -13,7 +13,8 @@
   "grades",
   "sick_allowed",
   "authorised_service_allowed",
-  "priority"
+  "priority",
+  "day_maximum"
  ],
  "fields": [
   {
@@ -51,11 +52,18 @@
    "fieldtype": "Int",
    "in_list_view": 1,
    "label": "Priority"
+  },
+  {
+   "description": "This will restrict to floor the data back to ensure no contribution to other parameters.\nEx. 7 Days reading, if results in 8.5 due to grade (A+), it has to be considered in a week to be maximum 7.",
+   "fieldname": "day_maximum",
+   "fieldtype": "Float",
+   "label": "Day Maximum",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-24 14:46:58.447788",
+ "modified": "2023-12-01 17:18:05.982632",
  "modified_by": "Administrator",
  "module": "Sadhana",
  "name": "Sadhana Parameter",
