@@ -39,7 +39,7 @@ def format_parameters(parameters:list):
     return parameters
 
 @frappe.whitelist()
-def get_default_preacher(user:str = None):
+def get_default_devotee(user:str = None):
     if not user:
         user = frappe.session.user
     entry = frappe.db.sql(f"""
@@ -52,3 +52,11 @@ def get_default_preacher(user:str = None):
     if entry:
         return entry[0][0]
     return None
+@frappe.whitelist()
+def get_sadhana_entries(devotee, start_date, end_date):
+    entries = []
+    for entry in frappe.get_all("Sadhana Entry",filters={'devotee':devotee,'date':['between',[start_date,end_date]]}, pluck='name'):
+        entry_doc = frappe.get_doc("Sadhana Entry",entry)
+        entries.append(entry_doc.as_dict())
+    return entries
+

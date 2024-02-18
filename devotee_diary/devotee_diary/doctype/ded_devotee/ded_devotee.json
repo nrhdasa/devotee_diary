@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "enabled",
   "full_name",
   "initial",
   "whatsapp_no",
@@ -79,12 +80,18 @@
    "fieldtype": "Link",
    "label": "Parent DED Devotee",
    "options": "DED Devotee"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2023-10-12 07:20:14.534707",
+ "modified": "2024-01-19 14:57:09.027603",
  "modified_by": "Administrator",
  "module": "Devotee Diary",
  "name": "DED Devotee",
