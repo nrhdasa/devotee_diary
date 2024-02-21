@@ -6,20 +6,12 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "date",
+  "entry_date",
   "devotee",
   "parameters",
   "amended_from"
  ],
  "fields": [
-  {
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Date",
-   "reqd": 1,
-   "set_only_once": 1
-  },
   {
    "fieldname": "devotee",
    "fieldtype": "Link",
@@ -43,11 +35,19 @@
    "options": "Sadhana Entry",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "entry_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Entry Date",
+   "reqd": 1,
+   "set_only_once": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-02-18 17:00:41.891349",
+ "modified": "2024-02-21 15:45:46.180591",
  "modified_by": "Administrator",
  "module": "Sadhana",
  "name": "Sadhana Entry",

@@ -1,31 +1,29 @@
 import frappe
+from frappe.exceptions import DoesNotExistError
 from frappe.utils.nestedset import get_descendants_of
 
 
 @frappe.whitelist()
-def get_devotees(detailed=0):
-    final_list = []
-    devotees = set()
-    for i in frappe.db.sql(
-        f"""
-                    select d.name
-                    from `tabDED Devotee` d
-                    join `tabDED Devotee User` du
-                    on d.name = du.parent
-                    where du.user = '{frappe.session.user}'
-                    group by d.name
-                    """,
-        as_dict=1,
-    ):
-        devotee_descendents = get_descendants_of("DED Devotee", i["name"], ignore_permissions=True)
-        final_list.append(i["name"])
-        devotees.update(set(devotee_descendents))
-    final_list.extend(list(devotees))
-    if detailed:
-        return frappe.get_all(
-            "DED Devotee",
-            filters=[["name", "in", final_list]],
-            fields=["name", "full_name", "is_group", "parent_ded_devotee"],
-        )
-    else:
-        return final_list
+def get_devotees(user = None,detailed=0):
+    if not user:
+        user = frappe.session.user
+    try:
+        devotee = frappe.get_doc("DED Devotee",{"erp_user":user})
+        devotee_descendents = get_descendants_of("DED Devotee", devotee.name, ignore_permissions=True)
+        print(devotee_descendents)
+        final_list = [devotee.name] + devotee_descendents
+        if detailed:
+            detailed_list = frappe.get_all(
+                "DED Devotee",
+                filters=[["name", "in", final_list]],
+                fields=["name", "full_name", "is_group", "parent_ded_devotee"],
+            )
+            ## Remove parent from top devotee
+            for d in detailed_list:
+                if d['name'] == devotee.name and d['parent_ded_devotee']:
+                    d['parent_ded_devotee'] = None
+            return detailed_list
+        else:
+            return final_list
+    except DoesNotExistError as e:
+        return []

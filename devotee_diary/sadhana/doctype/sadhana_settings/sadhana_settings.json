@@ -7,7 +7,9 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "firebase_admin_app"
+  "firebase_admin_app",
+  "sadhana_threshold_days",
+  "admin_role"
  ],
  "fields": [
   {
@@ -17,12 +19,25 @@
    "label": "Firebase Admin App",
    "options": "Firebase Admin App",
    "reqd": 1
+  },
+  {
+   "default": "7",
+   "fieldname": "sadhana_threshold_days",
+   "fieldtype": "Int",
+   "label": "Threshold Days ( Sadhana Entries )"
+  },
+  {
+   "fieldname": "admin_role",
+   "fieldtype": "Link",
+   "label": "Admin Role",
+   "options": "Role",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-10-13 10:26:25.725796",
+ "modified": "2024-02-21 18:35:05.277584",
  "modified_by": "Administrator",
  "module": "Sadhana",
  "name": "Sadhana Settings",

@@ -3,19 +3,43 @@
 
 import frappe
 from frappe.model.document import Document
-from frappe.utils.data import cint, getdate
-
+from frappe.utils.data import getdate
+from datetime import date, timedelta
 
 class SadhanaEntry(Document):
     def autoname(self):
         
-        dateF = getdate(self.date)
+        dateF = getdate(self.entry_date)
         dateStr = dateF.strftime("%y-%m-%d")
         self.name = f"{self.devotee}-{dateStr}"
 
     def validate(self):
         self.validate_grades()
         self.validate_duplicates()
+        self.validate_threshold_days()
+        self.validate_future_date()
+        return
+    def on_trash(self):
+        self.validate_threshold_days()
+        return
+
+    def validate_threshold_days(self):
+        settings = frappe.get_single("Sadhana Settings")
+        if settings.admin_role in frappe.get_roles(frappe.session.user):
+            return
+        
+        today = date.today()
+        threshold_date = today - timedelta(days=settings.sadhana_threshold_days)
+        
+        if getdate(self.entry_date) < threshold_date:
+            frappe.throw(f"Action on this date not allowed. Threshold Days : {settings.sadhana_threshold_days}")
+        return
+
+    def validate_future_date(self):
+        today = date.today()
+        if getdate(self.entry_date) > today:
+            frappe.throw(f"Not allowed this action for future dates.")
+        return
 
     def validate_grades(self):
         for p in self.parameters:
