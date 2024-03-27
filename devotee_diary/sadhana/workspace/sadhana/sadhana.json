@@ -1,0 +1,107 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"C7nyg6kGl2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Fill Sadhana\",\"col\":3}},{\"id\":\"bxKCNWquDR\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"AuiT2xcy9e\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters & Settings\",\"col\":4}},{\"id\":\"ExDQBtCUIt\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+ "creation": "2024-03-24 05:44:17.833502",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "share-people",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Sadhana",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Masters & Settings",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Devotee",
+   "link_count": 0,
+   "link_to": "DED Devotee",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Parameters",
+   "link_count": 0,
+   "link_to": "Sadhana Parameter",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settings",
+   "link_count": 0,
+   "link_to": "Sadhana Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Entries",
+   "link_count": 0,
+   "link_to": "Sadhana Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sadhana Cummulative",
+   "link_count": 0,
+   "link_to": "Sadhana Analysis",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-03-27 20:11:40.802269",
+ "modified_by": "nrhd@hkm-group.org",
+ "module": "Sadhana",
+ "name": "Sadhana",
+ "number_cards": [],
+ "owner": "nrhd@hkm-group.org",
+ "parent_page": "HKM",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 8.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "Fill Sadhana",
+   "link_to": "Sadhana Entry",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Sadhana"
+}
