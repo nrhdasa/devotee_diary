@@ -10,9 +10,8 @@
  "engine": "InnoDB",
  "field_order": [
   "enabled",
-  "full_name",
   "initial",
-  "whatsapp_no",
+  "full_name",
   "erp_user",
   "lft",
   "rgt",
@@ -22,13 +21,6 @@
  ],
  "fields": [
   {
-   "fieldname": "full_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Full Name",
-   "reqd": 1
-  },
-  {
    "fieldname": "initial",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -37,23 +29,20 @@
    "unique": 1
   },
   {
-   "fieldname": "whatsapp_no",
-   "fieldtype": "Data",
-   "label": "WhatsApp No."
-  },
-  {
    "fieldname": "lft",
    "fieldtype": "Int",
    "hidden": 1,
    "label": "Left",
-   "no_copy": 1
+   "no_copy": 1,
+   "read_only": 1
   },
   {
    "fieldname": "rgt",
    "fieldtype": "Int",
    "hidden": 1,
    "label": "Right",
-   "no_copy": 1
+   "no_copy": 1,
+   "read_only": 1
   },
   {
    "default": "0",
@@ -85,12 +74,18 @@
    "fieldtype": "Link",
    "label": "ERP User",
    "options": "User"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2024-02-21 14:57:32.600758",
+ "modified": "2024-03-07 17:49:26.916731",
  "modified_by": "Administrator",
  "module": "Devotee Diary",
  "name": "DED Devotee",

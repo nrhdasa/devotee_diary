@@ -223,3 +223,8 @@ has_permission = {
 # auth_hooks = [
 # 	"devotee_diary.auth.validate"
 # ]
+scheduler_events = {
+    # "cron": {"15 15,20 * * *": ["devotee_diary.tasks.sadhana_reminder"]},
+    "cron": {"30 15,20 * * *": ["devotee_diary.tasks.sadhana_reminder_1"]},
+    # "cron": {"30 20 * * *": ["devotee_diary.tasks.sadhana_reminder_2"]},
+}

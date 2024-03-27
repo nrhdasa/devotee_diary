@@ -22,6 +22,16 @@ def execute(filters=None):
         "Sadhana Parameter", filters={"active": 1}, pluck="name"
     )
     devotee_data = {}
+
+    for d in frappe.get_all("DED Devotee", fields=["name", "full_name"]):
+        # if d not in devotee_data:
+        #     devotee_data.setdefault(d, {"devotee": d})
+        # if entry["devotee"] not in devotee_data:
+        devotee_data.setdefault(
+            d["name"], {"devotee": d["full_name"], "sick": 0, "total": 0}
+        )
+        devotee_data[d["name"]].update({p: 0 for p in parameters})
+
     for entry in frappe.db.sql(
         f"""
 			select entry_date,devotee,tsd.parameter,tsd.points,tsd.authorised_service,tsd.sick
@@ -32,11 +42,6 @@ def execute(filters=None):
 				""",
         as_dict=1,
     ):
-        if entry["devotee"] not in devotee_data:
-            devotee_data.setdefault(
-                entry["devotee"], {"devotee": entry["devotee"], "sick": 0, "total": 0}
-            )
-            devotee_data[entry["devotee"]].update({p: 0 for p in parameters})
         if entry["authorised_service"]:
             devotee_data[entry["devotee"]][entry["parameter"]] += 1.0
         if entry["sick"]:
@@ -46,6 +51,7 @@ def execute(filters=None):
     from_date = datetime.strptime(filters.get("from_date"), "%Y-%m-%d")
     to_date = datetime.strptime(filters.get("to_date"), "%Y-%m-%d")
     total_days = (to_date - from_date).days + 1
+
     data = list(devotee_data.values())
 
     for d in data:
@@ -55,9 +61,9 @@ def execute(filters=None):
             if d[p] > total_days:
                 d[p] = total_days
             d["total"] += d[p]
-        d["percentage"] = (
+        d["percentage"] = round((
             d["total"] / (total_days * parameter_count - d["sick"])
-        ) * 100
+        ) * 100)
     data = sorted(data, key=lambda x: x["devotee"])
     # columns, data = [], []
     return columns, data
@@ -72,12 +78,15 @@ def get_columns(filters):
             "width": 120,
         },
     ]
-    for p in frappe.get_all("Sadhana Parameter", filters={"active": 1}, pluck="name"):
+    for p in frappe.get_all(
+        "Sadhana Parameter", filters={"active": 1}, pluck="name", order_by="priority"
+    ):
         columns.append(
             {
                 "label": p,
                 "fieldname": p,
                 "fieldtype": "Float",
+                "precision": 2,
                 "width": 120,
             },
         )
@@ -86,6 +95,7 @@ def get_columns(filters):
             "label": "Sick",
             "fieldname": "sick",
             "fieldtype": "Float",
+            "precision": 2,
             "width": 120,
         },
     )
@@ -94,6 +104,7 @@ def get_columns(filters):
             "label": "Total",
             "fieldname": "total",
             "fieldtype": "Float",
+            "precision": 2,
             "width": 120,
         },
     )

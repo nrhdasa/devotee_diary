@@ -20,6 +20,7 @@ class DEDDevotee(NestedSet):
         return
 
     def on_update(self):
+        super(DEDDevotee, self).on_update()
         if DIARY_ROLE not in frappe.get_roles(self.erp_user):
             user = frappe.get_doc("User", self.erp_user)
             user.add_roles([DIARY_ROLE])
